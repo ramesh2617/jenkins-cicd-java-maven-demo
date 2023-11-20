@@ -14,7 +14,8 @@ pipeline {
     stage('Build') {
       steps {
         // Run the maven build
-        "mvn" clean install
+        maven: 'maven3'
+        sh "mvn clean verify"
       }
 
     }
