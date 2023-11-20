@@ -2,7 +2,7 @@ def tomcatServerUrl = "http://192.168.19.108:8080/"
 pipeline {
   agent any
   tools {
-        maven 'Maven3'
+        maven 'maven3'
     }
     
   stages {
