@@ -7,7 +7,7 @@ pipeline {
     /* stage('Code checkout') {
       steps {
         //download code from github
-        git 'https://github.com/ajitinamdar-tech/jenkins-cicd-java-maven-demo.git'
+        git 'https://github.com/ramesh2617/jenkins-cicd-java-maven-demo.git'
       }
 
     }*/
@@ -21,11 +21,7 @@ pipeline {
     stage('Deploy') {
       steps {
         //deploy war on tomcat server
-        deploy adapters: [tomcat8(url: "${tomcatServerUrl}",
-            credentialsId: 'tomcat-credentials')],
-          war: 'target/*.war',
-          contextPath: 'pipeline-app'
-
+       deploy adapters: [tomcat9(credentialsId: 'bc9874d8-2ee2-4a8d-a96f-cc0727f839f0', path: '', url: 'http://192.168.19.108:8080/')], contextPath: 'pipeline-app', war: '**/*.war'
       }
     }
   }
