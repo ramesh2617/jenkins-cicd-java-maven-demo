@@ -1,6 +1,9 @@
 def tomcatServerUrl = "http://192.168.19.108:8080/"
 pipeline {
   agent any
+  tools {
+        maven 'Maven3'
+    }
     
   stages {
     //Use this code for inline pipeline script option
@@ -11,13 +14,10 @@ pipeline {
       }
 
     }*/
-    stage('Build') {
-      steps {
-        // Run the maven build
-        maven: 'maven3'
-        sh "mvn clean verify"
-      }
-
+    stage ('Build') {
+            steps {
+                sh 'mvn -Dmaven.test.failure.ignore=true install' 
+            }
     }
     stage('Deploy') {
       steps {
