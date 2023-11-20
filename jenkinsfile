@@ -14,7 +14,7 @@ pipeline {
     stage('Build') {
       steps {
         // Run the maven build
-        "maven3" clean install
+        "mvn" clean install
       }
 
     }
